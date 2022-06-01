@@ -54,7 +54,7 @@ console.log(orderId)
   var id = 1;
   return (
     <>
-    {userInfo && userInfo.roleId === 1 ? (
+    {userInfo ? (
       <>
       <div style={{ margin: "20px", width: "100%" }}>
       <Paper style={{ width: "50%" }}>
@@ -146,12 +146,12 @@ console.log(orderId)
                 <Divider />
               </List>
             ))}
-          </main>) : <Redirect to="/signin" />
+          </main>) : null
         ))}
       </Paper>
     </div>
       </>
-    ) : null}
+    ) :  <Redirect to="/signin" />}
             </>
   );
 };
