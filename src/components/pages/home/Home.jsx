@@ -20,14 +20,23 @@ const Home = () => {
   }, [validateIsAuthenticated]);
   return (
     <>
-      {userInfo && userInfo.roleId === 1 ? (
-        <div className="home">
-          <WidgetHome />
-          <LastOrders />
-        </div>
-      ) : (
-        <Redirect to="/signin" />
-      )}
+      <div className="home">
+        {userInfo && userInfo.roleId === 1 ? (
+          <>
+            <div className="productsList_pageTitle">
+              <Typography variant="body1">Dashboard</Typography>
+              <Typography variant="body1" style={{ color: "grey" }}>
+                {" "}
+                / Products
+              </Typography>
+            </div>
+            <WidgetHome />
+            <LastOrders />
+          </>
+        ) : (
+          <Redirect to="/signin" />
+        )}
+      </div>
     </>
   );
 };
