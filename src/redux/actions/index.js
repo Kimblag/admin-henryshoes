@@ -125,7 +125,7 @@ export function postLogIn({ email, password }) {
         payload: response.data,
       });
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.message);
     }
   };
 }
