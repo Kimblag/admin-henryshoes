@@ -28,6 +28,7 @@ import {
   GET_SHOPPING_CART,
   FETCH_USER_AUTH,
   GET_ALL_CATEGORIES,
+  GET_STOCK,
   GET_ALL_SIZES,
   DELETE_PRODUCT,
 } from "./types";
@@ -125,7 +126,7 @@ export function postLogIn({ email, password }) {
         payload: response.data,
       });
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.message);
     }
   };
 }
@@ -161,7 +162,7 @@ export const getAllBrands = () => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.response.data.message);
       });
   };
 };
@@ -177,7 +178,7 @@ export const getAllSizes = () => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.response.data.message);
       });
   };
 };
@@ -194,7 +195,7 @@ export const getAllCategory = () => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.response.data.message);
       });
   };
 };
@@ -297,7 +298,7 @@ export const postRegister = ({ name, lastname, password, email, address }) => {
         payload: data,
       });
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.message);
     }
   };
 };
@@ -364,6 +365,24 @@ export const fetchUserAuthenticated = () => {
 };
 
 
+export const GetStock = (productId) => {
+return async function (dispatch) {
+  try{
+  const response= await axios.get(
+    `${process.env.REACT_APP_API_URL}/Orders/productStock/${productId}`,
+  );
+  return dispatch({
+    type: GET_STOCK,
+    payload: response.data,
+  });
+} catch (error) {
+  console.error(error);
+}  
+}
+}
+
+
+
 
 export const deleteProduct = (id) => {
   return function (dispatch) {
@@ -379,3 +398,4 @@ export const deleteProduct = (id) => {
       .catch((error) => console.log(error));
   };
 };
+
