@@ -125,7 +125,7 @@ export function postLogIn({ email, password }) {
         payload: response.data,
       });
     } catch (error) {
-      console.error(error.response.data.message);
+      console.error(error);
     }
   };
 }
@@ -161,7 +161,7 @@ export const getAllBrands = () => {
         });
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        console.log(error);
       });
   };
 };
@@ -177,7 +177,7 @@ export const getAllSizes = () => {
         });
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        console.log(error);
       });
   };
 };
@@ -194,7 +194,7 @@ export const getAllCategory = () => {
         });
       })
       .catch((error) => {
-        alert(error.response.data.message);
+        console.log(error);
       });
   };
 };
@@ -297,7 +297,7 @@ export const postRegister = ({ name, lastname, password, email, address }) => {
         payload: data,
       });
     } catch (error) {
-      console.error(error.response.data.message);
+      console.error(error);
     }
   };
 };
